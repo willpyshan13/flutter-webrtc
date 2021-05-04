@@ -48,7 +48,11 @@ public class ConstraintsMap {
     }
 
     public ConstraintsMap getMap(String name){
-        return new ConstraintsMap((Map<String, Object>)mMap.get(name));
+        Object value = mMap.get(name);
+        if (value == null) {
+            return null;
+        }
+        return new ConstraintsMap((Map<String, Object>) value);
     }
 
     public ObjectType getType(String name) {
@@ -85,6 +89,10 @@ public class ConstraintsMap {
         mMap.put(key, value);
     }
 
+    public void putLong(String key, long value) {
+        mMap.put(key, value);
+    }
+
     public void putString(String key, String value) {
         mMap.put(key, value);
     }
@@ -110,7 +118,11 @@ public class ConstraintsMap {
     }
 
     public ConstraintsArray getArray(String name){
-        return new ConstraintsArray((ArrayList<Object>)mMap.get(name));
+        Object value = mMap.get(name);
+        if (value == null) {
+            return null;
+        }
+        return new ConstraintsArray((ArrayList<Object>) value);
     }
 
     public ArrayList<Object> getListArray(String name){
